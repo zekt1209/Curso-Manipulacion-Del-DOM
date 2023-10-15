@@ -1,4 +1,5 @@
 {
+  "homepage": "https://github.com/zekt1209/Curso-Manipulacion-Del-DOM.git",
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
