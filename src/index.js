@@ -10,6 +10,20 @@ console.log('Happy hacking :)')
 const baseUrl = 'https://platzi-avo.vercel.app';
 const appNode = document.querySelector('#app');
 
+// API Internacionalizacion 
+// 1- Formato a fechas
+
+// 2- Formato a monedas
+const formatPrice = (price) => {
+    const newPrice = new Intl.NumberFormat('es-mx', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(price);
+
+    return newPrice;
+}
+
+
 const fetchData = async (url) => {
     // Conectarnos a la API
     const response = await fetch(url);
@@ -45,17 +59,23 @@ const createAvocados = async (url) => {
             // Crear imagen
             const image = document.createElement('img');
             image.setAttribute('src', `${baseUrl}${element.image}`)
+            image.classList.add('app_img');
             
             // Crear nombre
-            const name = document.createElement('h2');
+            const name = document.createElement('h3');
             name.textContent = element.name;
+            name.classList.add('app_title');
+            // name.style = "font-size: 32px";
+            // name.style.fontSize = '32px';
             
             // Crear precio
             const price = document.createElement('div');
-            price.textContent = element.price;
+            price.textContent = formatPrice(element.price);
+            price.classList.add('app_price');
             
             // Crear container
             const container = document.createElement('div');
+            container.classList.add('app_container');
             container.append(image, name, price);
             todosLosItems.push(container);
         });
