@@ -11,26 +11,44 @@ const baseUrl = 'https://platzi-avo.vercel.app';
 const appNode = document.querySelector('#app');
 
 // API Internacionalizacion 
-// 1- Formato a fechas
+    // 1- Formato a fechas
 
-// 2- Formato a monedas
+    // 2- Formato a monedas
 const formatPrice = (price) => {
     const newPrice = new Intl.NumberFormat('es-mx', {
         style: 'currency',
         currency: 'USD'
     }).format(price);
-
+    
     return newPrice;
 }
 
-// eventListeners Functions
+// EventListeners Functions
 const appComprar = (event) => {
-    const nodosDelParent = [...event.target.parentElement.childNodes]
-    // console.log(nodosDelParent);
-    const title = nodosDelParent[1].textContent;
-    const price = nodosDelParent[2].textContent;
-    console.log("Has comprado un aguacate: " + title + ", Por: " + price);
+    
+    // console.log(event);
+    // console.log(event.target.className);
+
+    var clase = event.target.className;
+
+    if (clase.includes('app_button')) {
+        // console.log('Si contiene la clase!! ' + clase)
+        const nodosDelParent = [...event.target.parentElement.childNodes]
+        // console.log(nodosDelParent);
+        const title = nodosDelParent[1].textContent;
+        const price = nodosDelParent[2].textContent;
+        console.log("Has comprado un aguacate: " + title + ", Por: " + price);
+    }
+
+    // Otra validacion para validar el elemento clickeado
+    // if(event.target.nodeName === 'BUTTON') {
+    // }
+
 } 
+
+// Event Listeners
+appNode.addEventListener('click', appComprar);
+
 
 
 const fetchData = async (url) => {
@@ -86,9 +104,10 @@ const createAvocados = async (url) => {
             const comprarBtn = document.createElement('button');
             // comprarBtn.classList.add('button');
             comprarBtn.type = 'button';
+            comprarBtn.id = element.id;
+            comprarBtn.classList.add('app_button');
+            comprarBtn.classList.add('anotherClass');
             comprarBtn.textContent = 'Comprar';
-            comprarBtn.addEventListener('click', appComprar);
-
             
             // Crear container
             const container = document.createElement('div');
