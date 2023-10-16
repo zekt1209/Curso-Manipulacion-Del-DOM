@@ -1,5 +1,4 @@
 {
-  "homepage": "https://github.com/zekt1209/Curso-Manipulacion-Del-DOM.git",
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
@@ -7,7 +6,12 @@
     "install:husky": "husky install",
     "lint": "prettier --check \"src/**/*.js\"",
     "pre-commit": "pretty-quick --staged",
-    "compile": "webpack --config webpack.config.js"
+    "compile": "webpack --config webpack.config.js",
+    "deploy": "gh-pages -d ./public/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zekt1209/Curso-Manipulacion-Del-DOM.git"
   },
   "devDependencies": {
     "husky": "7",
@@ -18,6 +22,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "gh-pages": "^6.0.0",
     "yarn": "^1.22.19"
   }
 }

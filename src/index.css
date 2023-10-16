@@ -79,3 +79,9 @@
     margin-top: 5px;
     margin-left: 25px;
 }
+
+button {
+    background-color: var(--purple-light-2);
+    border-radius: 4px;
+    padding: 4px;
+}

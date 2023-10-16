@@ -23,6 +23,15 @@ const formatPrice = (price) => {
     return newPrice;
 }
 
+// eventListeners Functions
+const appComprar = (event) => {
+    const nodosDelParent = [...event.target.parentElement.childNodes]
+    // console.log(nodosDelParent);
+    const title = nodosDelParent[1].textContent;
+    const price = nodosDelParent[2].textContent;
+    console.log("Has comprado un aguacate: " + title + ", Por: " + price);
+} 
+
 
 const fetchData = async (url) => {
     // Conectarnos a la API
@@ -72,11 +81,19 @@ const createAvocados = async (url) => {
             const price = document.createElement('div');
             price.textContent = formatPrice(element.price);
             price.classList.add('app_price');
+
+            // Crear boton
+            const comprarBtn = document.createElement('button');
+            // comprarBtn.classList.add('button');
+            comprarBtn.type = 'button';
+            comprarBtn.textContent = 'Comprar';
+            comprarBtn.addEventListener('click', appComprar);
+
             
             // Crear container
             const container = document.createElement('div');
             container.classList.add('app_container');
-            container.append(image, name, price);
+            container.append(image, name, price, comprarBtn);
             todosLosItems.push(container);
         });
         
