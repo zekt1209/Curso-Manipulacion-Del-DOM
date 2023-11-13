@@ -20,6 +20,12 @@
       type="text/css"
       href="%PUBLIC_URL%/_dist_/index.css"
     />
+    <!-- Estilos usados para el deploy, sin snowpack -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/src/index.css"
+    />
     <title>Snowpack & Tailwind App</title>
   </head>
   <body>
@@ -56,5 +62,7 @@
 
     <!-- Add more scripts here -->
     <script type="module" src="%PUBLIC_URL%/_dist_/index.js"></script>
+    <!-- Script usado para el deploy, sin snowpack -->
+    <script type="module" src="/src/index.js"></script>
   </body>
 </html>
